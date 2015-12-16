@@ -7,8 +7,9 @@
     <div    id="graphContainer">
 	   <canvas id="resultsGraph" width="400" height="400" style="border:1px solid #000000;"></canvas>
 	</div><br>
-    <input  id="noOfTrials" type="text">Number of trials</input><br>
-	<input  id="prob"       type="text">Probability</input><br>
+    <input  id="noOfTrials"   type="text">Number of trials</input><br>
+	<input  id="streakLength" type="text">Streak Length</input><br>
+    <input  id="prob"         type="text">Probability</input><br>
 	<button id="genButton">Generate Button</button><br>
 </body>
 
@@ -24,42 +25,69 @@ var generate = function()
 	var trialsText = $("#noOfTrials").val();
 	var trials     = parseInt(trialsText);
 
+    var streakLength = parseInt($("#streakLength").val());
+    if(streakLength == 0)
+        return;
+
 	var probText   = $("#prob").val();
 	var prob       = parseInt(probText);
 
-	var trialNo;
+	var trialNo = 0;
 
 
     var results = [0, 0];
     var allShots = [];
 
-
+    var currentStreak = 0;
+    console.log("currentStreak: " + currentStreak);
+/*
+    console.log("trials: " + trials);
+    console.log("streak length: " + streakLength);
+    console.log("probability: " + prob);
+    console.log("results: " + currentStreak);
+    console.log("allShots: " + allShots);
+*/
 
 	for(trialNo = 0; trialNo < trials; ++trialNo)
 	{
-        var shots = [];
-        var shotNo;
-        for(shotNo = 0; shotNo < 7; ++shotNo )
-        {
-            var thisValue = Math.round((Math.random() * 100));
-            allShots.push(thisValue);
+        var thisValue = Math.round((Math.random() * 100));
+        
+        allShots.push(thisValue);
             
-            if(thisValue <= prob)
-                shots[shotNo] = true;
-            else
-                shots[shotNo] = false;
+        if(thisValue <= prob)
+        { // The current streak continutes (or starts)
+            ++currentStreak;
+            console.log("currentStreak: " + currentStreak);
+
         }
-	
-        if(allArrayElementsSame(shots, true))
-            ++results[0];
         else
-            ++results[1];
+        {// The current streak ends
+            results[0] += Math.floor(currentStreak / streakLength);
+            currentStreak = 0;
+        console.log("currentStreak: " + currentStreak);
+
+        }
+
+/*
+    console.log("trials: " + trials);
+    console.log("streak length: " + streakLength);
+    console.log("probability: " + prob);
+    console.log("results: " + currentStreak);
+    console.log("allShots: " + allShots);
+*/
+
 
     }	
+    results[0] += Math.floor(currentStreak / streakLength);
+
+
+    console.log(results);
+    results[1] = (trials - (results[0] * streakLength)) / streakLength;
+    console.log(results);
 
 
     var barData = {
-        labels : ["All baskets","at least one miss"],
+        labels : ["All successes","At least one failure"],
         datasets : [
             {
                 fillColor : "#48A497",
