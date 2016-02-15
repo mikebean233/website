@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-	$output = exec("pwd");
+	$output = exec(" sudo git pull");
 	echo "$output"; 
 
 	?>
