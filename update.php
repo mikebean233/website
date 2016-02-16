@@ -5,7 +5,9 @@
 <body>
 		<title>Updating mikeswebserver.com ... </title>
 <?php
-	$output = exec("pwd");
+	$output = array();
+	$arguments = array();
+	exec("pwd", $output, $arguments);
 	echo "$output"; 
 
 	?>
