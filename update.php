@@ -8,7 +8,9 @@
 	$output = array();
 	$arguments = array();
 	exec("pwd", $output, $arguments);
-	print_r($output); 
+	foreach($output as &$element){
+		echo $element;
+	}
 
 	?>
 </body>
