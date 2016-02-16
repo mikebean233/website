@@ -7,7 +7,7 @@
 <?php
 	$output = array();
 	$arguments = array();
-	exec("pwd", $output, $arguments);
+	exec("cd .. ; sudo git pull", $output, $arguments);
 	foreach($output as &$element){
 		echo $element;
 	}
