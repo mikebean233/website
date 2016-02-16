@@ -8,7 +8,7 @@ updating...<br>
 	$arguments = array();
 	exec("sudo git pull", $output, $arguments);
 	foreach($output as &$element){
-		echo $element;
+		echo "$element<br>";
 	}
 
 	?>
