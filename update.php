@@ -5,7 +5,7 @@
 <body>
 		<title>Updating mikeswebserver.com ... </title>
 <?php
-	$output = exec("sudo git pull");
+	$output = exec("pwd");
 	echo "$output"; 
 
 	?>
