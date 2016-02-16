@@ -3,6 +3,7 @@
 </head>
 <body>
 updating...<br>
+<div>
 <?php
 	$output = array();
 	$arguments = array();
@@ -12,5 +13,6 @@ updating...<br>
 	}
 
 	?>
+</div>
 </body>
 </html>
