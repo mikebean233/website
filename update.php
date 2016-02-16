@@ -7,7 +7,7 @@
 <?php
 	$output = array();
 	$arguments = array();
-	exec("sudo git pull", $output, $arguments);
+	exec("whoami", $output, $arguments);
 	foreach($output as &$element){
 		echo $element;
 	}
