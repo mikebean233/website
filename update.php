@@ -1,9 +1,8 @@
 <html>
 <head>
-<script src="jquery.js"></script>
 </head>
 <body>
-		<title>Updating mikeswebserver.com ... </title>
+updating...<br>
 <?php
 	$output = array();
 	$arguments = array();
