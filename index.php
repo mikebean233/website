@@ -27,9 +27,9 @@ $( document ).ready(function() {
 <a href="prob.html">Probability</a>
 <p><label>Access Log</label></p>
 <p><table id="accessTable">
-    <thread>
+    <thead>
         <tbody></tbody>
-    </thread>
+    </thead>
 </table></p>
-</body>d
+</body>
 </html>
