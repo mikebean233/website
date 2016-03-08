@@ -6,9 +6,9 @@
 <script language="javascript">
 $( document ).ready(function() {
     $("#accessTable").DataTable("/access.log");
-}
-</script>
 });
+</script>
+
 <link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
