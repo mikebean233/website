@@ -18,7 +18,19 @@
 <body>
 <script language="javascript">
 $( document ).ready(function() {
-    $("#accessTable").DataTable();
+
+	$.ajax({
+		url: "mikeswebserver.com/access.log",
+		type: "GET",
+		dataType: "json",
+		success: function(json){
+			console.log(json);
+		}
+	});
+
+
+	
+    $("#accessTable").DataTable({});
 });
 </script>
 
