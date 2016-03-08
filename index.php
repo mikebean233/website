@@ -46,7 +46,6 @@ $.ajax({
                 if(thisLineTokens && thisLineTokens.length >= accessTableColumns.length)
                     rowData[i] = thisLineTokens;
             }
-            console.log(rowData);
             table = $("#accessTable").DataTable({
             data: rowData,
                 columns: accessTableColumns,
