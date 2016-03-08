@@ -49,7 +49,7 @@ $.ajax({
             table = $("#accessTable").DataTable({
             data: rowData,
                 columns: accessTableColumns,
-                scrollY: true,
+                scrollY: "10em",
                 scrollX: true
             });
         }
