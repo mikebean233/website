@@ -18,6 +18,8 @@
 <body>
 <script language="javascript">
 $( document ).ready(function() {
+    var table;
+
 
 $.ajax({
         url: "http://www.mikeswebserver.com/access.log",
@@ -31,25 +33,25 @@ $.ajax({
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
                 rowData[i] = thisLineTokens;
             }
-            $("#accessTable").DataTable({
+            table = $("#accessTable").DataTable({
             data: rowData,
-            columns: [
-                {title: "time"},
-                {title: "host"},
-                {title: "user : port"},
-                {title: "remote logname"},
-                {title: "remote user"},
-                {title: "first line of request"},
-                {title: "status"},
-                {title: "referer"},
-                {title: "user agent"},
-                {title: "bytes received"},
-                {title: "bytes sent"}
-                ]
+                columns: [
+                    {title: "time"},
+                    {title: "host"},
+                    {title: "user : port"},
+                    {title: "remote logname"},
+                    {title: "remote user"},
+                    {title: "first line of request"},
+                    {title: "status"},
+                    {title: "referer"},
+                    {title: "user agent"},
+                    {title: "bytes received"},
+                    {title: "bytes sent"}
+                    ],
+                stripe: true,
+                row-border: true
             });
 
-            //console.log("\"" + splitByNewLine + "\"");
-          //console.log(splitByNewLine);
         }
     });
 
