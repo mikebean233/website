@@ -28,7 +28,7 @@ $.ajax({
             var splitByNewline = json.split("\n");
             var data[];
             for(var i = 0; i < splitByNewline.length; ++i){
-                var thisLineTokens = splitByNewline[i].split("<deliminator>");
+                var thisLineTokens = splitByNewline[i].split("<delimiter>");
                 data[i] = {
                     time: thisLineTokens[0],
                     host: thisLineTokens[1],
@@ -38,10 +38,10 @@ $.ajax({
                     firstLineOfRequest: thisLineTokens[5],
                     status: thisLineTokens[5],
                     referer: thisLineTokens[6],
-                    userAgent: thisLineTokens[7]
-
-
-            };
+                    userAgent: thisLineTokens[7],
+                    bytesReceived: thisLineTokens[8],
+                    bytesSent: thisLineTokens[9]
+                };
             }
             $("#accessTable").DataTable({data: data})};
             //console.log("\"" + splitByNewLine + "\"");
