@@ -36,7 +36,7 @@ $.ajax({
             columns: [
                 {title: "time"},
                 {title: "host"},
-                {title: "user : port"}
+                {title: "user : port"},
                 {title: "remote logname"},
                 {title: "remote user"},
                 {title: "first line of request"},
