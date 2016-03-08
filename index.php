@@ -19,7 +19,19 @@
 <script language="javascript">
 $( document ).ready(function() {
     var table;
-
+    var accessTableColumns : [
+        {title: "time"},
+        {title: "host"},
+        {title: "user : port"},
+        {title: "remote logname"},
+        {title: "remote user"},
+        {title: "first line of request"},
+        {title: "status"},
+        {title: "referer"},
+        {title: "user agent"},
+        {title: "bytes received"},
+        {title: "bytes sent"}
+    ];
 
 $.ajax({
         url: "http://www.mikeswebserver.com/access.log",
@@ -31,24 +43,12 @@ $.ajax({
             var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
-                if(!thisLineTokens && thisLineTokens.length > 0)
+                if(!thisLineTokens && thisLineTokens.length == accessTableColumns.length)
                     rowData[i] = thisLineTokens;
             }
             table = $("#accessTable").DataTable({
             data: rowData,
-                columns: [
-                    {title: "time"},
-                    {title: "host"},
-                    {title: "user : port"},
-                    {title: "remote logname"},
-                    {title: "remote user"},
-                    {title: "first line of request"},
-                    {title: "status"},
-                    {title: "referer"},
-                    {title: "user agent"},
-                    {title: "bytes received"},
-                    {title: "bytes sent"}
-                    ]
+                columns: accessTableColumns
             });
             console.log(rowData);
         }
