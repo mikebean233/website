@@ -26,7 +26,7 @@ $.ajax({
         contentType: "application/octet-stream",
         success: function(json){
             var splitByNewline = json.split("\n");
-            var data[];
+            var data = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
                 data[i] = {
