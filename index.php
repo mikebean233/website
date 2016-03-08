@@ -19,14 +19,18 @@
 <script language="javascript">
 $( document ).ready(function() {
 
-	$.ajax({
-		url: "mikeswebserver.com/access.log",
-		type: "GET",
-		dataType: "json",
-		success: function(json){
-			console.log(json);
-		}
-	});
+$.ajax({
+        url: "http://www.mikeswebserver.com/access.log",
+        type: "POST",
+        dataType: "jsonp",
+        contentType: "application/octet-stream",
+        success: function(json){
+
+            //var splitByNewline = json.split("\n");
+            //console.log("\"" + splitByNewLine + "\"");
+          console.log("hi");
+        }
+    });
 
 
 	
