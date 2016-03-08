@@ -43,7 +43,7 @@ $.ajax({
             var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
-                if(!thisLineTokens && thisLineTokens.length == accessTableColumns.length)
+                if(!thisLineTokens && thisLineTokens.length >= accessTableColumns.length)
                     rowData[i] = thisLineTokens;
             }
             table = $("#accessTable").DataTable({
