@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href="css/keyTable.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/rowReorder.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.ui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css"/>
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -13,7 +16,8 @@
     <script type="text/javascript" src="js/dataTables.colReorder.js"></script>
     <script type="text/javascript" src="js/dataTables.keyTable.js"></script>
     <script type="text/javascript" src="js/dataTables.responsive.js"></script>
-    <script type="text/javascript" src="js/dataTables.rowReorder.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+
 </head>
 <body>
 <script language="javascript">
