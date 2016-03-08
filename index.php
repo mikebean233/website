@@ -1,6 +1,6 @@
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/buttons.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/colReorder.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/keyTable.dataTables.css"/>
@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css.css"/>
+
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -17,7 +20,7 @@
     <script type="text/javascript" src="js/dataTables.keyTable.js"></script>
     <script type="text/javascript" src="js/dataTables.responsive.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-
+    <script type="text/javascript" src="js/bootstrap.js.js"></script>
 </head>
 <body>
 <script language="javascript">
@@ -69,13 +72,16 @@ $.ajax({
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
 
-<p><h2>Access Log</h2></p>
-<p><table id="accessTable" class="stripe row-border cell-border older-column nowrap" style="font-size: .7em">
-    <thead>
-        <tbody>
+<h2>Access Log</h2>
+<div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
+    <p><table id="accessTable" class="panel-body stripe row-border cell-border older-column nowrap" style="font-size: .7em">
+        <thead>
+            <tbody>
 
-        </tbody>
-    </thead>
-</table></p>
+            </tbody>
+        </thead>
+    </table>
+    </p>
+</div>
 </body>
 </html>
