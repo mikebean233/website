@@ -30,28 +30,17 @@ $.ajax({
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
                 rowData[i] = thisLineTokens;
-                /* rowData[i] = {
-                    time: thisLineTokens[0],
-                    host: thisLineTokens[1],
-                    userPort: thisLineTokens[2],
-                    remoteLogname: thisLineTokens[3],
-                    remoteUser: thisLineTokens[4],
-                    firstLineOfRequest: thisLineTokens[5],
-                    status: thisLineTokens[5],
-                    referer: thisLineTokens[6],
-                    userAgent: thisLineTokens[7],
-                    bytesReceived: thisLineTokens[8],
-                    bytesSent: thisLineTokens[9]
-                }; */
             }
             $("#accessTable").DataTable({
             data: rowData,
             columns: [
                 {title: "time"},
                 {title: "host"},
+                {title: "user : port"}
                 {title: "remote logname"},
                 {title: "remote user"},
                 {title: "first line of request"},
+                {title: "status"},
                 {title: "referer"},
                 {title: "user agent"},
                 {title: "bytes received"},
