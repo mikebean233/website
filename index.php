@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/rowReorder.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css"/>
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.ui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css"/>
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
