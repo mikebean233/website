@@ -34,7 +34,7 @@ $.ajax({
 
 
 	
-    $("#accessTable").DataTable({});
+   // $("#accessTable").DataTable({});
 });
 </script>
 
