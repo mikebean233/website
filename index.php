@@ -26,6 +26,6 @@ $( document ).ready(function() {
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
 <p><label>Access Log</label></p>
-<div id="accessTable"></div>
+<p><div id="accessTable"></div></p>
 </body>d
 </html>
