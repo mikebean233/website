@@ -61,7 +61,21 @@ $.ajax({
 <p><label>Access Log</label></p>
 <p><table id="accessTable">
     <thead>
-        <tbody></tbody>
+        <tbody>
+            <tr>
+                <th>time</th>
+                <th>host</th>
+                <th>userPort</th>
+                <th>remoteLogname</th>
+                <th>remoteUser</th>
+                <th>firstLineOfRequest</th>
+                <th>status</th>
+                <th>referer</th>
+                <th>userAgent</th>
+                <th>bytesReceived</th>
+                <th>bytesSent</th>
+            </tr>
+        </tbody>
     </thead>
 </table></p>
 </body>
