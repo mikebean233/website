@@ -47,9 +47,7 @@ $.ajax({
                     {title: "user agent"},
                     {title: "bytes received"},
                     {title: "bytes sent"}
-                    ],
-                stripe: true,
-                row-border: true
+                    ]
             });
 
         }
@@ -65,7 +63,7 @@ $.ajax({
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
 <p><label>Access Log</label></p>
-<p><table id="accessTable">
+<p><table id="accessTable" class="stripe row-border">
     <thead>
         <tbody>
 
