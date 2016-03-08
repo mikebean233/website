@@ -5,7 +5,7 @@
 <body>
 <script language="javascript">
 $( document ).ready(function() {
-    $("#accessTable").DataTable("/accesslog.log");
+    $("#accessTable").DataTable("/access.log");
 }
 </script>
 });
