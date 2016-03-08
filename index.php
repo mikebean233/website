@@ -29,7 +29,8 @@ $.ajax({
             var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
-                rowData[i] = {
+                rowData[i] = thisLineTokens
+                /*rowData[i] = {
                     time: thisLineTokens[0],
                     host: thisLineTokens[1],
                     userPort: thisLineTokens[2],
@@ -41,9 +42,23 @@ $.ajax({
                     userAgent: thisLineTokens[7],
                     bytesReceived: thisLineTokens[8],
                     bytesSent: thisLineTokens[9]
-                };
+                };*/
             }
-            $("#accessTable").DataTable({data: rowData});
+            $("#accessTable").DataTable({
+            data: rowData,
+            columns: [
+                {title: "time"},
+                {title: "host"},
+                {title: "remote logname"},
+                {title: "remote user"},
+                {title: "first line of request"},
+                {title: "referer"},
+                {title: "user agent"},
+                {title: "bytes received"},
+                {title: "bytes sent"}
+                ]
+            });
+            }
             //console.log("\"" + splitByNewLine + "\"");
           //console.log(splitByNewLine);
         }
@@ -62,19 +77,7 @@ $.ajax({
 <p><table id="accessTable">
     <thead>
         <tbody>
-            <tr>
-                <th>time</th>
-                <th>host</th>
-                <th>userPort</th>
-                <th>remoteLogname</th>
-                <th>remoteUser</th>
-                <th>firstLineOfRequest</th>
-                <th>status</th>
-                <th>referer</th>
-                <th>userAgent</th>
-                <th>bytesReceived</th>
-                <th>bytesSent</th>
-            </tr>
+
         </tbody>
     </thead>
 </table></p>
