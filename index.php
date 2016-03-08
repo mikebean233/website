@@ -19,7 +19,7 @@
 <script language="javascript">
 $( document ).ready(function() {
     var table;
-    var accessTableColumns : [
+    var accessTableColumns = [
         {title: "time"},
         {title: "host"},
         {title: "user : port"},
