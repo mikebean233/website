@@ -49,7 +49,7 @@ $.ajax({
                     {title: "bytes sent"}
                     ]
             });
-
+            console.log(rowData);
         }
     });
 
