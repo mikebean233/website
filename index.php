@@ -34,7 +34,7 @@ $( document ).ready(function() {
     ];
 
 $.ajax({
-        url: "http://www.mikeswebserver.com/access.log",
+        url: "access.log",
         type: "POST",
         dataType: "text",
         contentType: "application/octet-stream",
@@ -64,7 +64,7 @@ $.ajax({
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
 <p><label>Access Log</label></p>
-<p><table id="accessTable" class="stripe row-border">
+<p><table id="accessTable" class="stripe row-border" style="font-size: .7em">
     <thead>
         <tbody>
 
