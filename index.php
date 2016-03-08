@@ -43,7 +43,7 @@ $.ajax({
                     bytesSent: thisLineTokens[9]
                 };
             }
-            $("#accessTable").DataTable({data: data})};
+            $("#accessTable").DataTable({data: data});
             //console.log("\"" + splitByNewLine + "\"");
           //console.log(splitByNewLine);
         }
