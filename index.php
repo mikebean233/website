@@ -26,7 +26,7 @@ $.ajax({
         contentType: "application/octet-stream",
         success: function(json){
             var splitByNewline = json.split("\n");
-            var data = [];
+            var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
                 data[i] = {
@@ -43,7 +43,7 @@ $.ajax({
                     bytesSent: thisLineTokens[9]
                 };
             }
-            $("#accessTable").DataTable({data: data});
+            $("#accessTable").DataTable({data: rowData});
             //console.log("\"" + splitByNewLine + "\"");
           //console.log(splitByNewLine);
         }
