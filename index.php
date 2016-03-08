@@ -29,7 +29,7 @@ $.ajax({
             var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
-                rowData[i] = thisLineTokens
+                rowData[i] = thisLineTokens;
                 /*rowData[i] = {
                     time: thisLineTokens[0],
                     host: thisLineTokens[1],
