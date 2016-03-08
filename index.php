@@ -25,10 +25,27 @@ $.ajax({
         dataType: "text",
         contentType: "application/octet-stream",
         success: function(json){
-
             var splitByNewline = json.split("\n");
+            var data[];
+            for(var i = 0; i < splitByNewline.length; ++i){
+                var thisLineTokens = splitByNewline[i].split("<deliminator>");
+                data[i] = {
+                    time: thisLineTokens[0],
+                    host: thisLineTokens[1],
+                    userPort: thisLineTokens[2],
+                    remoteLogname: thisLineTokens[3],
+                    remoteUser: thisLineTokens[4],
+                    firstLineOfRequest: thisLineTokens[5],
+                    status: thisLineTokens[5],
+                    referer: thisLineTokens[6],
+                    userAgent: thisLineTokens[7]
+
+
+            };
+            }
+            $("#accessTable").DataTable({data: data})};
             //console.log("\"" + splitByNewLine + "\"");
-          console.log(splitByNewLine);
+          //console.log(splitByNewLine);
         }
     });
 
