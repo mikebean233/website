@@ -52,7 +52,6 @@ $.ajax({
                 scrollY: true,
                 scrollX: true
             });
-            console.log(JSON.stringify(rowData));
         }
     });
 
