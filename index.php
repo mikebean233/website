@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="css/colReorder.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/keyTable.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/responsive.dataTables.css"/>
-    <link rel="stylesheet" type="text/css" href="css/dataTables/rowReorder.css"/>
+    <link rel="stylesheet" type="text/css" href="css/rowReorder.dataTables.css"/>
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.js"></script>
