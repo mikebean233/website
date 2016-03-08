@@ -50,7 +50,7 @@ $.ajax({
             data: rowData,
                 columns: accessTableColumns
             });
-            console.log(rowData);
+            console.log(JSON.stringify(rowData));
         }
     });
 
