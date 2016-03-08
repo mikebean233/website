@@ -43,6 +43,7 @@ $.ajax({
             var rowData = [];
             for(var i = 0; i < splitByNewline.length; ++i){
                 var thisLineTokens = splitByNewline[i].split("<delimiter>");
+                console.log("thisLineTokens.length: " + thisLineTokens.length + "   accessTableColumns.length: " + accessTableColumns.length);
                 if(!thisLineTokens && thisLineTokens.length >= accessTableColumns.length)
                     rowData[i] = thisLineTokens;
             }
