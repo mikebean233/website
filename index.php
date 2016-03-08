@@ -26,9 +26,9 @@ $.ajax({
         contentType: "application/octet-stream",
         success: function(json){
 
-            //var splitByNewline = json.split("\n");
+            var splitByNewline = json.split("\n");
             //console.log("\"" + splitByNewLine + "\"");
-          console.log("hi");
+          console.log(splitByNewLine);
         }
     });
 
