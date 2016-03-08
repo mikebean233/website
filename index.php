@@ -48,7 +48,9 @@ $.ajax({
             }
             table = $("#accessTable").DataTable({
             data: rowData,
-                columns: accessTableColumns
+                columns: accessTableColumns,
+                scrollY: true,
+                scrollX: true
             });
             console.log(JSON.stringify(rowData));
         }
@@ -63,8 +65,9 @@ $.ajax({
 <link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
 <a href="http://www.github.com/mikebean233">github</a><br>
 <a href="prob.html">Probability</a>
-<p><label>Access Log</label></p>
-<p><table id="accessTable" class="stripe row-border" style="font-size: .7em">
+
+<p><h2>Access Log</h2></p>
+<p><table id="accessTable" class="stripe row-border cell-border older-column nowrap" style="font-size: .7em">
     <thead>
         <tbody>
 
