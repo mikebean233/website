@@ -1,4 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<title>
+    Michael Peterson
+</title>
 <head>
     <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
     <link rel="stylesheet" type="text/css" href="css/buttons.dataTables.css"/>
@@ -10,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.structure.css"/>
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
 
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
@@ -20,9 +24,9 @@
     <script type="text/javascript" src="js/dataTables.keyTable.js"></script>
     <script type="text/javascript" src="js/dataTables.responsive.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
-<body>
+
 <script language="javascript">
 $( document ).ready(function() {
     var table;
@@ -61,27 +65,37 @@ $.ajax({
             });
         }
     });
-
-
-	
-   // $("#accessTable").DataTable({});
 });
 </script>
-
-<link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
-<a href="http://www.github.com/mikebean233">github</a><br>
-<a href="prob.html">Probability</a>
-
-<h2>Access Log</h2>
-<div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
-    <p><table id="accessTable" class="panel-body stripe row-border cell-border older-column nowrap" style="font-size: .7em">
-        <thead>
-            <tbody>
-
-            </tbody>
-        </thead>
-    </table>
-    </p>
-</div>
+<body>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">mikeswebserver<small>.com</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
+            <ul style="list-style-type: none">
+                <li><a href="http://www.github.com/mikebean233">github</a></li>
+                <li><a href="prob.html">Probability</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <h2>Access Log</h2>
+                <p>
+                    <div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
+                        <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
+                            <thead>
+                                <tbody>
+                                </tbody>
+                            </thead>
+                        </table>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
