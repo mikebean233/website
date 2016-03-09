@@ -76,25 +76,24 @@ $.ajax({
     <div class="row">
         <div class="col-sm-2">
             <link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
-            <ul style="list-style-type: none">
-                <li><a href="http://www.github.com/mikebean233">github</a></li>
-                <li><a href="prob.html">Probability</a></li>
+            <ul style="list-style-type: none; padding-left: 0">
+                <li><a href="http://www.github.com/mikebean233">Github</a></li>
+                <li><a href="prob.html">robability</a></li>
+                <li><a href="http://www.linkedin.com/mikebean233">LinkedIn</a></li>
             </ul>
         </div>
         <div class="col-sm-10">
-            <div class="row">
-                <h2>Access Log</h2>
-                <p>
-                    <div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
-                        <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
-                            <thead>
-                                <tbody>
-                                </tbody>
-                            </thead>
-                        </table>
-                    </div>
-                </p>
-            </div>
+            <h2>Access Log</h2>
+            <p>
+                <div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
+                    <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
+                       <thead>
+                           <tbody>
+                           </tbody>
+                       </thead>
+                    </table>
+                </div>
+            </p>
         </div>
     </div>
 </body>
