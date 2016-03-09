@@ -79,7 +79,7 @@
                 <ul style="list-style-type: none; padding-left: 0">
                     <li><a href="http://www.github.com/mikebean233">Github</a></li>
                     <li><a href="prob.html">Probability</a></li>
-                    <li><a href="http://www.linkedin.com/mikebean233">LinkedIn</a></li>
+                    <li><a href="https://www.linkedin.com/in/mikebean233">LinkedIn</a></li>
                 </ul>
             </div>
             <div class="col-sm-10">
