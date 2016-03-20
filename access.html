@@ -1,0 +1,51 @@
+<script language="javascript">
+    $( document ).ready(function() {
+        var table;
+        var accessTableColumns = [
+            {title: "time"},
+            {title: "host"},
+            {title: "user : port"},
+            {title: "remote logname"},
+            {title: "remote user"},
+            {title: "first line of request"},
+            {title: "status"},
+            {title: "referer"},
+            {title: "user agent"},
+            {title: "bytes received"},
+            {title: "bytes sent"}
+        ];
+
+        $.ajax({
+            url: "/access.log",
+            type: "POST",
+            dataType: "text",
+            contentType: "application/octet-stream",
+            success: function(json){
+                var splitByNewline = json.split("\n");
+                var rowData = [];
+                for(var i = 0; i < splitByNewline.length; ++i){
+                    var thisLineTokens = splitByNewline[i].split("<delimiter>");
+                    if(thisLineTokens && thisLineTokens.length >= accessTableColumns.length)
+                        rowData[i] = thisLineTokens;
+                }
+                table = $("#accessTable").DataTable({
+                    data: rowData,
+                    columns: accessTableColumns,
+                    scrollY: "10em",
+                    scrollX: true
+                });
+            }
+        });
+    });
+</script>
+<h3>Access Log</h3>
+<p>
+<div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
+    <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
+        <thead>
+        <tbody>
+        </tbody>
+        </thead>
+    </table>
+</div>
+</p>

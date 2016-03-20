@@ -1,0 +1,130 @@
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/Chart.js"></script>
+<script language="javascript">
+    var initPartial = function(){
+        $("#genButton").click(generate);
+    };
+
+    var generate = function()
+    {
+        var trialsText = $("#noOfTrials").val();
+        var trials     = parseInt(trialsText);
+
+        var streakLength = parseInt($("#streakLength").val());
+        if(streakLength == 0)
+            return;
+
+        var probText   = $("#prob").val();
+        var prob       = parseInt(probText);
+
+        var trialNo = 0;
+
+
+        var results = [0, 0];
+        var allShots = [];
+
+        var currentStreak = 0;
+        console.log("currentStreak: " + currentStreak);
+        /*
+         console.log("trials: " + trials);
+         console.log("streak length: " + streakLength);
+         console.log("probability: " + prob);
+         console.log("results: " + currentStreak);
+         console.log("allShots: " + allShots);
+         */
+
+        for(trialNo = 0; trialNo < trials; ++trialNo)
+        {
+            var thisValue = Math.round((Math.random() * 100));
+
+            allShots.push(thisValue);
+
+            if(thisValue <= prob)
+            { // The current streak continutes (or starts)
+                ++currentStreak;
+                console.log("currentStreak: " + currentStreak);
+
+            }
+            else
+            {// The current streak ends
+                results[0] += Math.floor(currentStreak / streakLength);
+                currentStreak = 0;
+                console.log("currentStreak: " + currentStreak);
+
+            }
+
+            /*
+             console.log("trials: " + trials);
+             console.log("streak length: " + streakLength);
+             console.log("probability: " + prob);
+             console.log("results: " + currentStreak);
+             console.log("allShots: " + allShots);
+             */
+
+
+        }
+        results[0] += Math.floor(currentStreak / streakLength);
+
+
+        console.log(results);
+        results[1] = (trials - (results[0] * streakLength)) / streakLength;
+        console.log(results);
+
+
+        var barData = {
+            labels : ["All successes","At least one failure"],
+            datasets : [
+                {
+                    fillColor : "#48A497",
+                    strokeColor : "#48A4D1",
+                    data : [results[0], results[1]]
+                }
+
+            ]
+        }
+
+        $("#resultsGraph").remove();
+        $("#graphContainer").append('<canvas id="resultsGraph" width="400" height="400" style="border:1px solid #000000;"></canvas>');
+
+        var ctx = $("#resultsGraph").get(0).getContext("2d");
+        var myNewChart = new Chart(ctx).Bar(barData);
+
+        console.log(allShots);
+
+    }
+
+    var allArrayElementsSame = function(array, target)
+    {
+        console.log(array);
+
+        if(!array || !target)
+            false;
+
+        if(array.length == 0)
+            return false;
+
+        var i;
+        for(i = 0; i < array.length; ++i)
+        {
+            if(array[i] != target)
+                return false;
+        }
+        return true;
+    }
+
+
+</script>
+<div  class="text-center">
+    <h1>Tools</h1>
+</div>
+<h2>Probability</h2>
+
+<p>
+    <div id="graphContainer">
+        <canvas id="resultsGraph" width="400" height="400" style="border:1px solid #000000;"></canvas>
+        </div><br>
+        <input  id="noOfTrials"   type="text">Number of trials</input><br>
+        <input  id="streakLength" type="text">Streak Length</input><br>
+        <input  id="prob"         type="text">Probability</input><br>
+        <button id="genButton">Generate Button</button><br>
+</p>

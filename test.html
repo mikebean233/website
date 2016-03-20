@@ -26,77 +26,81 @@
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
 </head>
+<style>
+    .nav a {
+        font-size: 20px
+    }
+    .dropdown
+    .dropdown-menu li:hover .sub-menu {
+        visibility: visible;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+</style>
 <script language="javascript">
+    var menuItemClickHandler = function(e){
+        $("#mainContainer").empty().load(e.target.id + ".html", function(){
+            initPartial()
+        });
+    };
+
     $(document).ready(function(){
 
-        var table;
-        var accessTableColumns = [
-            {title: "time"},
-            {title: "host"},
-            {title: "user : port"},
-            {title: "remote logname"},
-            {title: "remote user"},
-            {title: "first line of request"},
-            {title: "status"},
-            {title: "referer"},
-            {title: "user agent"},
-            {title: "bytes received"},
-            {title: "bytes sent"}
-        ];
-
-        var cannedData = [
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET / HTTP/1.1\"","200","\"-\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","453","1140"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /css/jquery.dataTables.css HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","525","2655"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /css/buttons.dataTables.css HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","526","2071"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /css/colReorder.dataTables.css HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","527","504"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /css/keyTable.dataTables.css HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","525","434"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /css/responsive.dataTables.css HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","529","1296"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /js/dataTables.buttons.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","509","10521"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /js/dataTables.colReorder.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","512","10447"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /js/dataTables.keyTable.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","510","6610"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /js/dataTables.responsive.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","512","10743"],
-            ["[08/Mar/2016:16:23:42 +0000]","146.187.0.50 ","Mike:80","-","-","\"GET /js/dataTables.rowReorder.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","512","6526"],
-            ["[08/Mar/2016:18:54:04 +0000]","146.187.0.101 ","Mike:80","-","-","\"GET /js/jquery-2.2.0.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","504","77357"],
-            ["[08/Mar/2016:18:54:04 +0000]","146.187.0.101 ","Mike:80","-","-","\"GET /js/jquery.dataTables.js HTTP/1.1\"","200","\"http://www.mikeswebserver.com/\""," \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36\"","509","113201"]
-        ];
-
-        table = $("#accessTable").DataTable({
-            data: cannedData,
-            columns: accessTableColumns,
-            scrollX: true,
-            scrollY: "10em"
-        });
+        $("#mainContainer").empty().load("home.html", function(){
+            initPartial()
+            });
+        $(".mainMenuItem").click(menuItemClickHandler);
     });
 </script>
 
 
 <body class="container-fluid" style="background-color: aliceblue">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="text-center">mikeswebserver<small>.com</small></h1>
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="mainMenuItem text-left">
+                    <a href=""style="text-decoration: none; color: inherit">
+                        mikeswebserver<small>.com</small>
+                    </a>
+                </h4>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <link rel="shortcut icon" href="http://www.mikeswebserver.com/favicon.ico" />
-            <ul style="list-style-type: none; padding-left: 0">
-                <li><a href="http://www.github.com/mikebean233">Github</a></li>
-                <li><a href="prob.html">Probability</a></li>
-                <li><a href="https://www.linkedin.com/in/mikebean233">LinkedIn</a></li>
-            </ul>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-pills navbar-default collapse navbar-collapse">
+
+                    <li><a href="#" class="mainMenuItem" id="home">Home</a></li>
+                    <li><a href="#" class="mainMenuItem" id="tools">Tools</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle mainMenuItem" id="projects" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Projects<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="mainMenuItem clickable" id="missileCommand">Missile Command Clone (C#, WPF)</a></li>
+                            <li><a href="#" class="mainMenuItem" id="blackjack">Blackjack Library (C)</a></li>
+                            <li><a href="#" class="mainMenuItem" id="mediaPlayer">Media Player (C#, WPF, SqlLite)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="mainMenuItem" id="contact">Contact</a></li>
+
+
+                    <li class="dropdown navbar-right">
+                        <a href="#" class="dropdown-toggle mainMenuItem"  style="font-size: 1em" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Admin<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" class="mainMenuItem" id="access"  style="font-size: 1em">Server Activity</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="col-sm-10">
-                <h3>Access Log</h3>
-                <p>
-                    <div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
-                        <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
-                            <thead>
-                                <tbody>
-                                </tbody>
-                            </thead>
-                        </table>
-                    </div>
-                </p>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="mainContainer"></div>
         </div>
     </div>
 </body>
