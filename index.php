@@ -72,7 +72,7 @@
 							$result = array();
 							$arguments = array();
                     		//exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} ", $result, $arguments); 
-                    		exec("sudo git show", $result, $arguments);
+                    		exec("git show", $result, $arguments);
 							echo $result[0];
                     	?>
                     </small> </h4>
