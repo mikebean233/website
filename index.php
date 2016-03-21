@@ -66,12 +66,19 @@
                             mikeswebserver<small>.com</small>
                         </a>
                     </h4>
-                    <h4 style="float: right"><small>last updated <?php echo exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} "); ?></small> </h4>
+                    <h4 style="float: right">
+                    <small>last updated 
+                    	<?php 
+							$result = array();
+							$arguments = array();
+                    		exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} ", $result, $arguments); 
+                    		echo $result[0];
+                    	?>
+                    </small> </h4>
                 </div>
             </div>
-            <h1 class="text-center"><small>the personal website of </small>Michael Peterson</h1></p>
-        </div>
-        </div>
+            <h1 class="text-center"><small>the personal website of </small>Michael Peterson</h1>
+       </div>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-pills navbar-default navbar-collapse">
