@@ -71,7 +71,7 @@
                     	<?php 
 							$output = array();
 							exec('git show -s --format=%cd', $output); 
-                    		$tokens = strtok($output[0], " ");
+                    		$tokens = explode(" ", $output[0]);
                     		
 							echo "$tokens[0] $tokens[1] $tokens[2] $tokens[3] $tokens[4]";
                     	?>
