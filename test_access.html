@@ -1,5 +1,7 @@
 <script language="javascript">
     var initPartial = function(){
+        $("#accessTableWrapper").resizable();
+
         var table;
         var accessTableColumns = [
             {title: "time"},
@@ -34,14 +36,14 @@
         table = $("#accessTable").DataTable({
             data: cannedData,
             columns: accessTableColumns,
-            scrollX: true,
-            scrollY: "10em"
+            scrollX: true
+
         });
     };
 </script>
 <h3>Access Log</h3>
 <p>
-     <div id="accessTableWrapper" class="panel panel-default" style="background-color: mintcream">
+     <div id="accessTableWrapper" class="panel panel-default ui-widget-content" style="background-color: mintcream">
         <table id="accessTable" class="panel-body stripe row-border cell-border order-column nowrap" style="font-size: .7em">
             <thead>
                 <tbody>
