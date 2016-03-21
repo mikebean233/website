@@ -66,7 +66,7 @@
                             mikeswebserver<small>.com</small>
                         </a>
                     </h4>
-                    <h4 style="float: right"><small>last updated <?php echo exec("output=($(git show -s --format=%cd)); unset output[5]; echo ${output[*]}") ?></small> </h4>
+                    <h4 style="float: right"><small>last updated <?php echo exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} "); ?></small> </h4>
                 </div>
             </div>
             <h1 class="text-center"><small>the personal website of </small>Michael Peterson</h1></p>
