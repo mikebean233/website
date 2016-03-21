@@ -69,8 +69,9 @@
                     <h4 style="float: right">
                     <small>last updated 
                     	<?php 
-							$output = system('git show -s --format=%cd'); 
-                    		$tokens = strtok($outpu, " ");
+							$output = array();
+							exec('git show -s --format=%cd', $output); 
+                    		$tokens = strtok($output[0], " ");
                     		
 							echo "$tokens[0] $tokens[1] $tokens[2] $tokens[3] $tokens[4]";
                     	?>
