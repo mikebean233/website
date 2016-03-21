@@ -69,11 +69,11 @@
                     <h4 style="float: right">
                     <small>last updated 
                     	<?php 
-							//$result = array();
-							//$arguments = array();
-                    		echo shell_exec('output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} ', $result, $arguments); 
+							$result = array();
+							$arguments = array();
+                    		exec('git show -s --format=%cd', $result, $arguments); 
                     		//exec("git show", $result, $arguments);
-							//echo $result[0];
+							echo $result[0];
                     	?>
                     </small> </h4>
                 </div>
