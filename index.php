@@ -71,8 +71,9 @@
                     	<?php 
 							$result = array();
 							$arguments = array();
-                    		exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} ", $result, $arguments); 
-                    		echo $result[0];
+                    		//exec("output=(\$(git show -s --format=%cd)); unset output[5]; echo \${output[*]} ", $result, $arguments); 
+                    		exec("git show", $result, $arguments);
+							echo $result;
                     	?>
                     </small> </h4>
                 </div>
