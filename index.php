@@ -1,3 +1,24 @@
+<?php
+    //xdebug_enable();
+    $dirContents = scandir("main_content");
+    $sections = array();
+    $contentDirectory = "main_content";
+    $mainContent = scandir($contentDirectory);
+    $sectionNames = array();
+    foreach($mainContent as &$item){
+        if(is_file($contentDirectory."/".$item)){
+            $thisSectionName = explode(".", $item)[0];
+            $sections[$thisSectionName] = $contentDirectory."/".$item;
+            array_push($sectionNames, $thisSectionName);
+        }
+    }
+    $sections["admin"] = "admin/access.html";
+
+    $section = $sections[$_GET["section"]];
+
+    if($section == null)
+        $section = $sections["home"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <title>
@@ -15,6 +36,7 @@
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
@@ -40,29 +62,12 @@
     }
 
 </style>
-<script language="javascript">
-    var menuItemClickHandler = function(e){
-        $("#mainContainer").empty().load(e.target.id + ".html", function(){
-            initPartial()
-        });
-    };
-
-    $(document).ready(function(){
-
-        $("#mainContainer").empty().load("home.html", function(){
-            initPartial()
-            });
-        $(".mainMenuItem").click(menuItemClickHandler);
-    });
-</script>
-
-
 <body class="container-fluid" style="background-color: aliceblue">
         <div class="row">
             <div class="col-sm-12">
                 <div style="clear: both">
                     <h4 class="mainMenuItem" style="float: left">
-                        <a href="" style="text-decoration: none; color: inherit">
+                        <a href="/" style="text-decoration: none; color: inherit">
                             mikeswebserver<small>.com</small>
                         </a>
                     </h4>
@@ -83,29 +88,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-pills navbar-default navbar-collapse">
-
-                    <li><a href="#" class="mainMenuItem" id="home">Home</a></li>
-                    <li><a href="#" class="mainMenuItem" id="tools">Tools</a></li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle mainMenuItem" id="projects" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            Projects<span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" class="mainMenuItem clickable" id="missileCommand">Missile Command Clone (C#, WPF)</a></li>
-                            <li><a href="#" class="mainMenuItem" id="blackjack">Blackjack Library (C)</a></li>
-                            <li><a href="#" class="mainMenuItem" id="mediaPlayer">Media Player (C#, WPF, SqlLite)</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="mainMenuItem" id="contact">Contact</a></li>
-
-
+                    <?php
+                        foreach($sectionNames as &$thisSectionName){
+                            echo '<li><a href="?section=' . $thisSectionName . '" class="mainMenuItem">' . ucwords($thisSectionName) . '</a></li>';
+                        }
+                    ?>
                     <li class="dropdown navbar-right">
-                        <a href="#" class="dropdown-toggle mainMenuItem"  style="font-size: 1em" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a href="?section=admin" class="dropdown-toggle mainMenuItem"  style="font-size: 1em" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             Admin<span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#" class="mainMenuItem" id="access"  style="font-size: 1em">Server Activity</a></li>
+                            <li><a href="?section=admin" class="mainMenuItem" id="access"  style="font-size: 1em">Server Activity</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -113,8 +106,22 @@
         </div>
     <div class="row">
         <div class="col-sm-12">
-            <div id="mainContainer"></div>
+            <div id="mainContainer">
+                <?php
+                    include $section;
+
+                ?>
+            </div>
         </div>
     </div>
 </body>
+<script language="javascript">
+    $(document).ready(function(){
+        initPartial();
+        // $("#mainContainer").empty().load("home.html", function(){
+        //     initPartial()
+        //     });
+        // $(".mainMenuItem").click(menuItemClickHandler);
+    });
+</script>
 </html>
