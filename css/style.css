@@ -6,3 +6,8 @@ table {
 	visibility: visible;
 	overflow: visible;
 }
+
+.top-nav {
+    position : fixed!important;
+    top:0;
+}
