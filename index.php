@@ -1,23 +1,10 @@
 <?php
-    //xdebug_enable();
-    $dirContents = scandir("main_content");
-    $sections = array();
-    $contentDirectory = "main_content";
-    $mainContent = scandir($contentDirectory);
-    $sectionNames = array();
-    foreach($mainContent as &$item){
-        if(is_file($contentDirectory."/".$item)){
-            $thisSectionName = explode(".", $item)[0];
-            $sections[$thisSectionName] = $contentDirectory."/".$item;
-            array_push($sectionNames, $thisSectionName);
-        }
-    }
-    $sections["admin"] = "admin/access.html";
-
-    $section = $sections[$_GET["section"]];
-
-    if($section == null)
-        $section = $sections["home"];
+    include 'lib/DirectoryIndexer.php';
+     use DirectoryIndexer;
+     $mainContentMap = new \DirectoryIndexer("main_content", ["admin" => "admin/access.html"], "home");
+     $section = $mainContentMap->getSameOrDefaultKey($_GET["section"]);
+     if(is_null($section))
+        $section = "home";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +24,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-
 
     <script type="text/javascript" src="js/jquery-2.2.0.js"></script>
     <script type="text/javascript" src="js/jquery.dataTables.js"></script>
@@ -84,13 +70,15 @@
                 </div>
             </div>
             <h1 class="text-center"><small>the personal website of </small>Michael Peterson</h1>
-       </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-pills navbar-default navbar-collapse">
                     <?php
+                        $sectionNames = $mainContentMap->getMenuKeys();
                         foreach($sectionNames as &$thisSectionName){
-                            echo '<li><a href="?section=' . $thisSectionName . '" class="mainMenuItem">' . ucwords($thisSectionName) . '</a></li>';
+                            $isActiveSection = $thisSectionName == $section ? 'class="active"' : '';
+                            echo '<li ' . $isActiveSection . '><a href="?section=' . $thisSectionName . '" class="mainMenuItem">' . ucwords($thisSectionName) . '</a></li>';
                         }
                     ?>
                     <li class="dropdown navbar-right">
@@ -108,8 +96,7 @@
         <div class="col-sm-12">
             <div id="mainContainer">
                 <?php
-                    include $section;
-
+                    include $mainContentMap->get($section);
                 ?>
             </div>
         </div>
@@ -117,11 +104,7 @@
 </body>
 <script language="javascript">
     $(document).ready(function(){
-        initPartial();
-        // $("#mainContainer").empty().load("home.html", function(){
-        //     initPartial()
-        //     });
-        // $(".mainMenuItem").click(menuItemClickHandler);
+        //initPartial();
     });
 </script>
 </html>
