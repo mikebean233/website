@@ -12,8 +12,6 @@
         <h1>Projects</h1>
     </p>
 </div>
-This page hasn't been built yet, for now check out my projects on <a href="https://github.com/mikebean233">GitHub</a>.
-
 <ul class="nav nav-tabs">
     <?php
     $projectNames = $projectsMap->getMenuKeys();

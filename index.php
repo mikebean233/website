@@ -33,6 +33,22 @@
     <script type="text/javascript" src="js/dataTables.responsive.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
+
+    <!-- Time Card -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="projects/timeCard/runtime-es2015.js" type="module"></script>
+    <script src="projects/timeCard/polyfills-es2015.js" type="module"></script>
+    <script src="projects/timeCard/runtime-es5.js" nomodule></script>
+    <script src="projects/timeCard/polyfills-es5.js" nomodule></script>
+    <script src="projects/timeCard/styles-es2015.js" type="module"></script>
+    <script src="projects/timeCard/styles-es5.js" nomodule></script>
+    <script src="projects/timeCard/vendor-es2015.js" type="module"></script>
+    <script src="projects/timeCard/main-es2015.js" type="module"></script>
+    <script src="projects/timeCard/vendor-es5.js" nomodule></script>
+    <script src="projects/timeCard/main-es5.js" nomodule></script>
 </head>
 <style>
     .nav a {
